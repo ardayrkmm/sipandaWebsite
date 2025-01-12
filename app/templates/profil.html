@@ -1,0 +1,84 @@
+{% extends "/layout/layout.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profil.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="content">
+        <div class="banner">
+            <div class="profil">
+                <!-- Display the user's current profile picture or a default image -->
+                <img src="{{ img_profil }}" alt="Profil Picture">
+            </div>
+        </div>
+
+        <div class="bagianText">
+            
+            <div class="bagianEditText">
+                <!-- Display and Edit Name -->
+                <div class="baganText">
+                    <h2>Nama</h2>
+                    <h1>{{ user.nama }}</h1>
+                    
+                </div>
+
+                <!-- Display and Edit Email -->
+                <div class="baganText">
+                    <h2>Email</h2>
+                    <h1>{{ user.email }}</h1>
+                    
+                </div>
+
+                <!-- Display and Edit Phone Number -->
+                <div class="baganText">
+                    <h2>Telp</h2>
+                    <h1>{{ user.no_telp }}</h1>
+                    
+                </div>
+
+                <!-- Change Profile Picture Section -->
+                <div class="baganText">
+                    <h3>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#editProfil">Edit Profil</button>
+                    </h3>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="editProfil" tabindex="-1" role="dialog" aria-labelledby="editTelpModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editTelpModalLabel">Edit No Telp</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  <label for="nama">Nama</label>
+                  <input type="text" name="nama" class="form-control" value="{{ user.nama }}" required>
+                  <label for="email">Email</label>
+                  <input type="text" name="email" class="form-control" value="{{ user.email }}" required>
+                  <label for="not_telp">No telpon</label>
+                    <input type="number" name="no_telp" class="form-control" value="{{ user.no_telp }}" required>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="{{ url_for('static', filename='/js/profil.js') }}"></script>
+{% endblock %}
+

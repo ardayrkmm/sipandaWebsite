@@ -1,0 +1,118 @@
+{% extends "/admin/layout/index.html" %}
+
+{% block content %}
+<div class="overview">
+    <div class="title">
+        <i class="uil uil-files-landscapes"></i>
+        <span class="text">Data Laporan</span>
+    </div>
+
+    <div class="boxes">
+        <div class="box box1">
+            <i class="uil uil-share"></i>
+            <span class="text">Total Laporan</span>
+            <span class="number">{{ laporan_data|length }}</span>
+        </div>
+        <div class="box box2">
+            <i class="uil uil-comments"></i>
+            <span class="text">Laporan Proses</span>
+            <span class="number">{{ laporan_proses }}</span>
+        </div>
+        <div class="box box3">
+            <i class="uil uil-thumbs-up"></i>
+            <span class="text">Laporan Selesai</span>
+            <span class="number">{{ laporan_selesai }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="activity">
+    <div class="title">
+        <i class="uil uil-clock-three"></i>
+        <span class="text">Aktivitas</span>
+    </div>
+
+    <div class="activity-data">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Nama Lengkap</th>
+                    <th>No Hp</th>
+                    <th>Maps</th>
+                    <th>Keterangan</th>
+                    <th>Gambar</th>
+                    <th>Status</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for laporan in laporan_data %}
+                <tr>
+                    <td>{{ laporan.nama_lapor }}</td>
+                    <td>{{ laporan.nomer_hp }}</td>
+                    <td>
+                        {% if laporan.maps %}
+                        <a href="https://www.google.com/maps?q={{ laporan.maps }}" target="_blank" rel="noopener noreferrer">View Map</a>
+                        {% else %}
+                        <span>Tidak tersedia</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ laporan.keterangan[:20] }}{% if laporan.keterangan|length > 20 %}...{% endif %}</td>
+                    <td>
+                        {% if laporan.file_url %}
+                        <a href="{{ url_for('static', filename='uploads/' + laporan.file_url ) }}" target="_blank" rel="noopener noreferrer">
+                            <img src="{{ url_for('static', filename='uploads/' + laporan.file_url ) }}" alt="Gambar Laporan" style="width: 100px; height: auto;">
+                        </a>
+                        {% else %}
+                        <span>Tidak ada gambar</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ laporan.status.value }}</td>
+                    <td>
+                        <form action="{{ url_for('delete_laporan', laporan_id=laporan.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="action-btn delete-btn"
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus laporan ini?')">
+                                <i class="fa fa-trash"></i> Hapus
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="8">Tidak ada data laporan.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.status-dropdown').forEach(dropdown => {
+        dropdown.addEventListener('change', function () {
+            const laporanId = this.getAttribute('data-id');
+            const newStatus = this.value;
+
+            fetch('/update_status', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: laporanId, status: newStatus })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Status berhasil diperbarui!');
+                } else {
+                    alert('Gagal memperbarui status: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan. Silakan coba lagi.');
+            });
+        });
+    });
+</script>
+{% endblock %}

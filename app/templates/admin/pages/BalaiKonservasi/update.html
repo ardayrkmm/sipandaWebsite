@@ -1,0 +1,60 @@
+{% extends "/admin/layout/index.html" %}
+
+{% block content %}
+
+<div class="overview">
+    <div class="title">
+        <i class="uil uil-files-landscapes"></i>
+        <span class="text">Edit Data Balai Konservasi</span>
+    </div>
+</div>
+
+<div class="form-container">
+    <form action="{{ url_for('editbalai', id_balaikonservasi=balai.id_balaikonservasi) }}" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="nama_balai">Nama Balai</label>
+            <input type="text" id="nama_balai" name="nama_balai" class="form-control" value="{{ balai.nama_balai }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="deskripsi">Deskripsi</label>
+            <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4" required>{{ balai.deskripsi }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="provinsi">Provinsi</label>
+            <input type="text" id="provinsi" name="provinsi" class="form-control" value="{{ balai.provinsi }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <input type="text" id="alamat" name="alamat" class="form-control" value="{{ balai.alamat }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="gambarbalai">Gambar</label>
+            <input type="file" id="gambarbalai" name="gambarbalai" class="form-control">
+            {% if balai.gambarbalai %}
+            <div class="current-image">
+                <p>Gambar saat ini:</p>
+                <img src="{{ url_for('static', filename='gambarUser/' + balai.gambarbalai) }}" alt="{{ balai.nama_balai }}" style="max-width: 200px;">
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            <a href="{{ url_for('balaiKonservasi') }}" class="btn btn-secondary">Batal</a>
+        </div>
+    </form>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="alert alert-{{ messages[0][0] }}">
+            {{ messages[0][1] }}
+        </div>
+    {% endif %}
+{% endwith %}
+
+{% endblock %}

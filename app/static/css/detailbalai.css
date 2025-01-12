@@ -1,0 +1,124 @@
+*,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.content-detail{
+    margin: 70px;
+    
+    min-height: calc(100vh - 60px);
+   
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.bagianHeader{
+    width: 100%;
+   
+
+    display: flex;
+    margin-top: 20px;
+}
+.bagianGambar{
+    width: 50%;
+    height: 714px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-right: 10px;
+
+}
+.bagianGambar img{
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+
+}
+.bagianContent{
+    width: 50%;
+    height: 714px;
+    overflow: hidden;
+    
+    margin-left: 10px;
+}
+.bagianContent h1{
+    font-size: 32px;
+    font-weight: 600;
+
+}
+.bagianContent h3{
+    font-size: 16px;
+    font-weight: 300;
+
+}
+
+.garisIjo{
+    width: 120px;
+    height: 6px;
+    background-color: #014224;
+}
+.bagianContent p{
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 300;
+    color: rgb(159, 159, 159);
+    text-align: justify;
+}
+.rowCard{
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.cardData{
+    width: 238px;
+    height: 112px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    margin-right: 10px;
+}
+.cardData h2{
+    font-size: 16px;
+    color: #E9A950;
+    font-weight: 500;
+}
+
+
+.bagianLokasi{
+    margin-bottom: 10px;
+
+}
+.garisOren{
+    width: 80px;
+    height: 6px;
+    margin-left: 20px;
+    background-color: #E9A950;
+}
+
+.bagianCiri{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+
+.cardCiri{
+    
+  
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.cardCiri h1{
+    font-size: 18px;
+    color: black;
+}

@@ -1,0 +1,73 @@
+{% extends "/admin/layout/index.html" %}
+
+{% block content %}
+<div class="overview">
+    <div class="title">
+        <i class="uil uil-files-landscapes"></i>
+        <span class="text">Data Berita</span>
+    </div>
+
+    <div class="boxes">
+        <div class="box box1">
+            <i class="uil uil-share"></i>
+            <span class="text">Total Berita</span>
+            <span class="number">{{ total_berita }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="activity">
+    <div class="title">
+        <i class="uil uil-clock-three"></i>
+        <span class="text">Aktivitas</span>
+    </div>
+    <div class="button-container">
+        <a href="{{ url_for('create_berita') }}">
+            <button class="add-data-btn"> Tambah Data</button>
+        </a>
+    </div>
+
+    <div class="activity-data">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Gambar</th>
+                    <th>Judul</th>
+                    <th>Tanggal</th>
+                    <th>Konten</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in news %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>
+                        {% if item.gambar %}
+                        <img src="{{ url_for('static', filename='gambarUser/' + item.gambar) }}" alt="{{ item.judul }}" width="100">
+                        {% else %}
+                        Tidak Ada Gambar
+                        {% endif %}
+                    </td>
+                    <td>{{ item.judul }}</td>
+                    <td>{{ item.tanggal }}</td>
+                    <td>{{ item.konten[:100] }}...</td>
+                    <td>
+                        <a href="{{ url_for('update_berita', berita_id=item.id) }}" class="action-btn edit-btn">
+                            <i class="fa fa-edit"></i> Edit
+                        </a>
+                        <form action="{{ url_for('delete_berita', berita_id=item.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="action-btn delete-btn"
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">
+                                <i class="fa fa-trash"></i> Hapus
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

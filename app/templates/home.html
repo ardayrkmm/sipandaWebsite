@@ -1,0 +1,177 @@
+{% extends "/layout/layout.html" %}
+
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="Jumbroton" id="Jumbroton">
+  <div class="bagianContent">
+    <div class="contentText">
+      <h1>
+        AYO<br>LINDUNGI
+      </h1>
+      <p>Jelajahi dan pelajari lebih lanjut tentang hewan-hewan yang terancam punah dan dilindungi. Mari bersama-sama
+        menjaga kelestarian spesies langka dan membantu upaya konservasi mereka.</p>
+    </div>
+    <div class="bagianGambarPilih">
+      <div class="iconPilihG">
+        <div class="imgPG" datajm="url('/static/img/in.jpg')">
+          <img src="/static/img/in.jpg" alt="">
+        </div>
+        <div class="imgPG" datajm="url('/static/img/en.jpg')">
+          <img src="/static/img/en.jpg" alt="">
+        </div>
+        <div class="imgPG" datajm="url('/static/img/un.jpg')">
+          <img src="/static/img/un.jpg" alt="">
+        </div>
+      </div>
+      <div class="iconPilih">
+        <div class="btnAr" id="prevBtn"></div>
+        <div class="ila-container">
+          <div class="ila"></div>
+          <div class="ila"></div>
+          <div class="ila"></div>
+        </div>
+        <div class="btnAr" id="nextBtn"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tentangKontainer" id="tentang">
+    <div class="bagianGmbr"><img src="/static/img/ilTentang.png" alt=""></div>
+    <div class="bagianText">
+      <h1>About</h1>
+      <p>SIPANDA adalah sebuah aplikasi inovatif yang dirancang untuk mendukung upaya perlindungan dan pelestarian satwa
+        yang dilindungi di Indonesia. Aplikasi ini memanfaatkan teknologi terkini untuk mendeteksi dan memberikan
+        informasi lengkap mengenai status konservasi satwa, habitat aslinya, dan langkah-langkah perlindungan yang
+        diperlukan.</p>
+    </div>
+  </div>
+
+
+  <div class="bagianDataGrafik" id="dataHewan">
+    <div class="bgnText">
+      <h1>Data Hewan</h1>
+      <p>Kumpulan informasi hewan yang di lindungi di indonesia</p>
+    </div>
+    <div class="bagianCardData">
+      {% for hewan in hewans %}
+      <div class="cardData">
+        <div class="imgCardD">
+          <img src="{{ url_for('static', filename='gambarUser/' + hewan.url_gambar) }}" alt="{{ hewan.nama }}">
+        </div>
+        <h1>{{ hewan.nama }}</h1>
+        <a href="{{url_for('pindahHalaman', id_hewan=hewan.id_hewan)}}">
+          <div class="btnCardD">
+            Lihat
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="baganFitur" id="fitur">
+    <div class="gambarFTR">
+      <div class="imgFTR kecil">
+
+        <img src="/static/img/in.jpg" alt="">
+
+      </div>
+      <div class="imgFTR sedang">
+        <img src="/static/img/en.jpg" alt="">
+      </div>
+      <div class="imgFTR besar">
+        <img src="/static/img/un.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="textFitur">
+      <h2>Fitur</h2>
+      <h1>Apa saja yang ada di SIPANDA?</h1>
+      <p>SIPANDA akan memberikan fitur <br>yang bermanfaat untuk anda</p>
+      <div class="fiturCrd" onclick="toggleDropdown('desc1')">
+        <img src="/static/img/icon.png" alt="">
+        <h1>Deteksi Gambar</h1>
+      </div>
+      <div class="fiturCrd">
+        <img src="/static/img/icon.png" alt="">
+        <h1>Chat Bot</h1>
+      </div>
+      <div class="fiturCrd">
+        <img src="/static/img/icon.png" alt="">
+        <h1>Lapor</h1>
+      </div>
+    </div>
+  </div>
+  <div class="bagianDataGrafik" id="databalai">
+    <div class="bgnText">
+      <h1>Data Balai Konservasi</h1>
+      <p>Kumpulan informasi Balai Konservasi</p>
+    </div>
+    <div class="bagianCardData">
+      {% for balai in balais %}
+      <div class="cardData">
+        <div class="imgCardD">
+          <img src="{{ url_for('static', filename='gambarUser/' + balai.gambarbalai) }}" alt="{{ balai.nama_balai }}">
+        </div>
+        <h1 title="{{ balai.nama_balai }}">{{ balai.nama_balai }}</h1>
+        <div class="btnCardD">
+          <a href="{{ url_for('pindahHalamanBalai', id_balaikonservasi=balai.id_balaikonservasi) }}">Lihat</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="bagianMaps" id="maps">
+    <h2>Maps</h2>
+    <h1>Balai Konservasi</h1>
+    <p>Menunjukan Balai Konservarsi yang ada di indonesia.</p>
+    <div id="map" class="maps"></div>
+  </div>
+
+  <div class="bagianDataGrafikBerita">
+    <h1 class="title-berita">Berita Terbaru</h1>
+    <div class="container-berita">
+      <div class="card-grid-berita">
+        {% for item in news %}
+        <div class="news-card">
+          <img src="{{ url_for('static', filename='gambarUser/' + item['gambar']) }}" alt="Gambar Berita"
+            class="news-image">
+          <div class="news-content">
+            <h3 class="news-title">{{ item['judul'][:50] }}...</h3>
+            <p class="news-date">Tanggal: <em>{{ item['tanggal'] }}</em></p>
+            <!-- <p class="news-summary">{{ item.konten [:50] }}...</p> -->
+            <a href="{{ url_for('pindahHalamanBerita', id_berita=item.id) }}" class="read-more">Baca Selengkapnya</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid py-4">
+    <div class="card">
+      <div class="card-header">Berikan Komentar Anda!</div>
+      <div class="card-body">
+        <form action="{{ url_for('komenTambah') }}" method="POST">
+          <div class="mb-3">
+            <textarea name="comment" id="comment" class="form-control" placeholder="Masukkan komentar Anda..." rows="4"
+              required></textarea>
+          </div>
+          <button type="submit" class="btn btn-submit btn-primary" id="submitButton">Kirim</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+
+  {% block scripts %}
+
+  <script src="{{ url_for('static', filename='/js/home.js') }}"></script>
+  {% endblock %}

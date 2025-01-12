@@ -1,0 +1,121 @@
+*,
+html {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin-top: 100px;
+    margin-bottom: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+.card-content {
+    display: flex; /* Gunakan Flexbox untuk menyusun elemen secara horizontal */
+    align-items: flex-start; /* Pastikan elemen berada di atas secara sejajar */
+    gap: 20px; /* Berikan jarak antara gambar dan teks */
+    padding: 20px; /* Berikan padding agar konten tidak terlalu rapat dengan tepi */
+}
+
+.card-image {
+    flex: 1; 
+    max-width: 40%;
+    height: 400px; /* Batasi lebar maksimal gambar */
+    display: flex; /* Tambahkan untuk memastikan elemen di dalamnya terpusat */
+    justify-content: center; /* Center secara horizontal */
+    align-items: center; /* Center secara vertikal */
+    background-color: #f8f8f8; /* Tambahkan background untuk memastikan gambar terlihat */
+    border-radius: 10px;
+    overflow: hidden; /*indari gambar keluar dari container */
+}
+
+.card-image img {
+    width: 100%; /* Gambar akan memenuhi lebar container */
+    height: 100%; /* Jaga agar proporsi gambar tetap asli */
+    object-fit: cover; /* Isi container dengan gambar */
+}
+
+.result {
+    flex: 2; /* Berikan ruang fleksibel untuk teks */
+    display: flex;
+    flex-direction: column; /* Susun teks secara vertikal */
+    justify-content: flex-start; /* Pastikan teks dimulai dari atas */
+}
+
+.result h2 {
+    margin-bottom: 15px; /* Berikan jarak bawah untuk judul */
+}
+
+.result .info p {
+    margin: 5px 0; /* Berikan jarak antar paragraf */
+}
+
+.card-details {
+    flex: 1.5;
+    background-color: #F0F0F0;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.card-details p {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.status {
+    color: #145E32;
+    font-weight: bold;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: space-between; 
+    justify-content: start;
+    width: 100%;
+    padding: 20px;
+  
+    gap: 10px; 
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+}
+
+.btn-upload, .btn-report {
+    background-color: #145E32;
+    color: white;
+    padding: 10px 85px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    width:400px; 
+}
+
+.btn-upload:hover, .btn-report:hover {
+    background-color: #0f4a29;
+}
+
+.btn-report {
+    background-color: #A62A15;
+    max-width: 400px;
+}
+
+.btn-report:hover {
+    background-color: #8C2411;
+}

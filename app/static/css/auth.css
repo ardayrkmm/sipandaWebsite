@@ -1,0 +1,151 @@
+body {
+    background-color: #EEEEE4;
+    height: 100vh;
+    margin: 0;
+}
+
+.nav-link {
+    font-weight: 600;
+    font-size: 16px;
+    color: #004400 !important;
+    margin-right: 15px;
+}
+
+.btn-success {
+    background-color: #004400;
+    border: none;
+    font-size: 16px;
+    padding: 8px 20px;
+    border-radius: 8px;
+}
+
+.btn-success:hover {
+    background-color: #003300;
+}
+
+.login-container {
+    background-color: #EEEEE4;
+    padding-right: 100px;
+    padding-bottom: 60px;
+}
+
+h1 {
+    font-weight: 700;
+    color: #004400;
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+}
+
+.form-control {
+    height: 50px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.btn-outline-success,
+.btn-outline-primary {
+    color: #004400;
+    border-color: #004400;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+a {
+    color: #004400;
+}
+
+.logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #9b1b1b;
+}
+
+.login-image {
+    margin-right: 1px;
+}
+
+@media (max-width: 768px) {
+    .login-image {
+        height: auto;
+        padding-left: 0;
+        padding-bottom: 30px;
+    }
+
+    .login-container {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+}
+
+.bpa {
+    margin-top: 20px;
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+}
+
+.line {
+    height: 1px;
+    background-color: #004400;
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+/*REGISTER*/
+.register-container {
+    background-color: #EEEEE4;
+    padding-right: 100px;
+    padding-bottom: 60px;
+}
+h1 {
+    font-weight: 700;
+    color: #004400;
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+}
+
+.form-control {
+    height: 50px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.btn-outline-success,
+.btn-outline-primary {
+    color: #004400;
+    border-color: #004400;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+a {
+    color: #004400;
+}
+
+.register-image {
+    margin-right: 1px;
+    height: 550px;
+}
+
+.line {
+    height: 1px;
+    background-color: #004400;
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+}
+

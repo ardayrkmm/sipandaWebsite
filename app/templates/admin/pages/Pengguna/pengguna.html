@@ -1,0 +1,73 @@
+{% extends "/admin/layout/index.html" %}
+
+{% block content %}
+<div class="overview">
+    <div class="title">
+        <i class="uil uil-tachometer-fast-alt"></i>
+        <span class="text">Data User</span>
+    </div>
+
+    <div class="boxes">
+        <div class="box box1">
+            <i class="uil uil-user"></i>
+            <span class="text">Total Super Admin</span>
+            <span class="number">{{ total_super_admin }}</span>
+        </div>
+        <div class="box box2">
+            <i class="uil uil-user"></i>
+            <span class="text">Total Admin</span>
+            <span class="number">{{ total_admin }}</span>
+        </div>
+        <div class="box box3">
+            <i class="uil uil-user"></i>
+            <span class="text">Total User</span>
+            <span class="number">{{ total_user }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="activity">
+    <div class="title">
+        <i class="uil uil-clock-three"></i>
+        <span class="text">Aktivitas</span>
+    </div>
+
+    <div class="activity-data">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Gambar</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>No Hp</th>
+                    <th>Role</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td><img src="{{ user.img_profil }}" alt="Gambar Profil" width="50" height="50"></td>
+                    <td>{{ user.nama }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.no_telp }}</td>
+                    <td>{{ user.role.value }}</td>
+                    <td>
+                        <a href="{{ url_for('editDataPengguna', user_id=user.id) }}" class="action-btn edit-btn">
+                            <i class="fa fa-edit"></i> Edit
+                        </a>
+                        <form action="{{ url_for('delete_user', user_id=user.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="action-btn delete-btn"
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                Hapus
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

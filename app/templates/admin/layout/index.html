@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/style.css')}}">
+
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    {% block styles %}{% endblock %}
+    <title>Admin</title>
+</head>
+
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="images/logo.png" alt="">
+            </div>
+
+            <span class="logo_name">SIPANDA</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                {% if session.get('role') == 'super_admin' %}
+                <li>
+                    <a href="{{ url_for('admin') }}" class="{% if request.path == url_for('admin') %}active{% endif %}">
+                        <i class="uil uil-estate"></i>
+                        Sentimen Analisis
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('laporan') }}"
+                        class="{% if request.path == url_for('laporan') %}active{% endif %}">
+                        <i class="uil uil-files-landscapes"></i>
+                        Laporan
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('hewan') }}" class="{% if request.path == url_for('hewan') %}active{% endif %}">
+                        <i class="uil uil-chart"></i>
+                        Data Hewan
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('balaiKonservasi') }}"
+                        class="{% if request.path == url_for('balaiKonservasi') %}active{% endif %}">
+                        <i class="uil uil-thumbs-up"></i>
+                        Data Balai Konservasi
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('pengguna') }}"
+                        class="{% if request.path == url_for('pengguna') %}active{% endif %}">
+                        <i class="uil uil-user"></i>
+                        Data User
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('kategori') }}"
+                        class="{% if request.path == url_for('kategori') %}active{% endif %}">
+                        <i class="uil uil-book"></i>
+                        Kategori
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('Berita') }}"
+                        class="{% if request.path == url_for('Berita') %}active{% endif %}">
+                        <i class="uil uil-comments"></i>
+                        Berita
+                    </a>
+                </li>
+                {% endif %}
+
+                {% if session.get('role') == 'pihak_berwajib' %}
+                <li>
+                    <a href="{{ url_for('admin') }}" class="{% if request.path == url_for('admin') %}active{% endif %}">
+                        <i class="uil uil-estate"></i>
+                        Sentimen Analisis
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('laporan') }}"
+                        class="{% if request.path == url_for('laporan') %}active{% endif %}">
+                        <i class="uil uil-files-landscapes"></i>
+                        Laporan
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('Berita') }}"
+                        class="{% if request.path == url_for('Berita') %}active{% endif %}">
+                        <i class="uil uil-comments"></i>
+                        Berita
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="logout-mode">
+                <li><a href="{{ url_for('home') }}">
+                        <i class="uil uil-home"></i>
+                        <span class="link-name">Kembali ke Web</span>
+                    </a></li>
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <span class="link-name">Mode Gelap</span>
+                    </a>
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+                <li><a href="{{ url_for('logout') }}">
+                        <i class="uil uil-signout"></i>
+                        <span class="link-name">Keluar</span>
+                    </a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+
+            <img src="images/profile.jpg" alt="">
+        </div>
+        <div class="dash-content">
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+    </section>
+
+    <script src="{{url_for('static', filename='/js/script.js')}}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

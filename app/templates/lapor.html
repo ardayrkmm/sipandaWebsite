@@ -1,0 +1,47 @@
+{% extends "/layout/layout.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lapor.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="lapor-container">
+        <div class="form-card">
+            <h2>LAPOR</h2>
+            <form class="activity-form" enctype="multipart/form-data" method="POST" action="{{ url_for('lapor') }}">
+                <label for="nama_lapor">Nama Lengkap</label>
+                <input type="text" id="nama_lapor" name="nama_lapor" required>
+            
+                <label for="nomer_hp">No Hp</label>
+                <input type="text" id="nomer_hp" name="nomer_hp" required>
+            
+                <label for="alamat">Alamat</label>
+                <input type="text" id="alamat" name="alamat" required>
+            
+                <label for="maps">Maps</label>
+                <div id="map"></div>
+                <input type="text" id="maps" name="maps" placeholder="Klik di peta untuk memilih lokasi" readonly required>
+            
+                <label for="keterangan">Keterangan</label>
+                <textarea id="keterangan" name="keterangan" required></textarea>
+            
+                <label for="file_url">Gambar Laporan</label>
+                <div class="uploaded-image">
+                    <img src="{{ url_for('static', filename='uploads/' + file_url) }}" alt="Gambar Hasil Scan">
+                </div>
+                <input type="hidden" name="file_url" value="{{ file_url }}">  <!-- Kirim file_url melalui form POST -->
+            
+                <button type="submit">Kirim Laporan</button>
+            </form>            
+        </div>
+        <div class="illustration">
+            <img src="{{ url_for('static', filename='image/3d-casual-life-man-chatting-remotely-with-female-colleague.png') }}" alt="Illustration of reporting">
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/lapor.js') }}"></script>
+{% endblock %}

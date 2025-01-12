@@ -1,0 +1,58 @@
+{% extends "/admin/layout/index.html" %}
+
+
+{% block content %}
+
+<!-- <div class="overview">
+    <div class="title">
+        <i class="uil uil-tachometer-fast-alt"></i>
+        <span class="text">Data Kategori</span>
+    </div>
+</div> -->
+
+<div class="activity">
+    <div class="title">
+        <i class="uil uil-clock-three"></i>
+        <span class="text">Kategori</span>
+    </div>
+    <div class="button-container">
+        <a href="{{url_for('kategoriTambah')}}">
+            <button class="add-data-btn"> Tambah Data</button>
+        </a>
+    </div>
+
+
+    <div class="activity-data">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Kategori</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for kategori in kategoriData%}
+                <tr>
+
+                    <td>{{loop.index}}</td>
+                    <td>{{kategori.nama_kategori}}</td>
+                    <td>
+                        <a href="{{url_for('kategoriUpdate', id_kategori=kategori.id_kategori)}}">
+                        <button class="action-btn edit-btn" >
+                            <i class="fa fa-edit"></i> Edit
+                        </button>
+                    </a>
+                    <a href="{{url_for('hapusKategori', id_kategori=kategori.id_kategori)}}">
+                        <button class="action-btn delete-btn">
+                            <i class="fa fa-trash"></i> Delete
+                        </button>
+                    </a>   
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

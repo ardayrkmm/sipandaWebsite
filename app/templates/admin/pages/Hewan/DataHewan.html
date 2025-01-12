@@ -1,0 +1,93 @@
+{% extends "/admin/layout/index.html" %}
+
+
+{% block content %}
+
+<div class="overview">
+    <div class="title">
+        <i class="uil uil-tachometer-fast-alt"></i>
+        <span class="text">Data Hewan</span>
+    </div>
+    <div class="kotaks">
+        <div class="kotak box1">
+            <i class="uil uil-thumbs-up"></i>
+            <span class="text">Total Hewan</span>
+            <span class="number">50,120</span>
+        </div>
+        <div class="kotak box2">
+            <i class="uil uil-comments"></i>
+            <span class="text">Kategori</span>
+            <span class="number">20,120</span>
+        </div>
+    </div>
+</div>
+
+<div class="activity">
+    <div class="title">
+        <i class="uil uil-clock-three"></i>
+        <span class="text">Aktivitas</span>
+    </div>
+    <div class="button-container">
+        <a href="{{url_for('tambahHewan')}}">
+            <button class="add-data-btn"> Tambah Data</button>
+        </a>
+    </div>
+
+
+    <div class="activity-data">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Gambar</th>
+                    <th>Nama Hewan</th>
+                    <th>Nama Latin</th>
+                    <th>Deskripsi</th>
+                    <th>Status</th>
+                    <th>Populasi</th>
+                    <th>Habitat</th>
+                    <th>Ciri-ciri</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {%for hwns in hewans%}
+                    <td>{{loop.index}}</td>
+                    <td>{{hwns.url_gambar[:5]}}...</td>
+                    <td>{{hwns.nama}}</td>
+                    <td>{{hwns.nama_latin}}</td>
+                    <td>{{hwns.deskripsi[:100]}}...</td>
+                    <td>{{hwns.status}}</td>
+                    <td>{{hwns.populasi}}</td>
+                    <td>{{hwns.habitat}}</td>
+                    <td>
+                        {% for ciri in hwns.ciri_ciri %}
+                        <li>{{ ciri.ciri }}</li>
+                        {% endfor %}
+                    </td>
+                  
+                    <td>
+                        <a href="{{ url_for('editHewans', id_hewan=hwns.id_hewan) }}">
+                            <button class="action-btn edit-btn">
+                                <i class="fa fa-edit"></i> Edit
+                            </button>
+                        </a>
+                        <form action="{{ url_for('deleteHewan', id_hewan=hwns.id_hewan) }}"
+                            method="POST" style="display:inline;">
+                            <button type="submit" class="action-btn delete-btn"
+                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                <i class="fa fa-trash"></i> Hapus
+                            </button>
+                        </form>
+                        
+                            
+                        
+                    </td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

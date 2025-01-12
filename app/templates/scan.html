@@ -1,0 +1,58 @@
+{% extends "/layout/layout.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/scan.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="card shadow">
+        <div class="card-body">
+            <h1 class="card-title">Unggah Gambar untuk Deteksi</h1>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="flash-messages mt-3">
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+            <form action="{{ url_for('halamanScan') }}" method="POST" enctype="multipart/form-data" class="mt-4">
+                <div class="form-group">
+                    <label for="file">Pilih Gambar (.png, .jpg, .jpeg):</label>
+                    <input type="file" id="file" name="file" accept=".png, .jpg, .jpeg" class="form-control" required onchange="previewImage(event)">
+                </div>
+                <div class="form-group mt-3">
+                    <label>Pratinjau Gambar:</label>
+                    <div id="image-preview" style="display: none; margin-top: 10px;">
+                        <img id="preview" src="#" alt="Pratinjau gambar" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Deteksi</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('preview');
+        const imagePreviewContainer = document.getElementById('image-preview');
+
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                imagePreviewContainer.style.display = 'block'; 
+            };
+
+            reader.readAsDataURL(input.files[0]); 
+        }
+    }
+</script>
+{% endblock %}

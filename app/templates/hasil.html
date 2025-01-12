@@ -1,0 +1,55 @@
+{% extends "/layout/layout.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/hasil.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="card-container">
+    <!-- Konten utama -->
+    <div class="card-content">
+        <!-- Kolom Gambar -->
+        <div class="card-image">
+            <img src=" {{ url_for('static', filename='uploads/' + file_url) }}" alt="Hasil Gambar">
+        </div>
+        <!-- Kolom Detail -->
+        <div class="result">
+            <h2>Prediksi: {{ result['predicted_label'] }}</h2>
+           
+            {% if result['species_info'] %}
+            <div class="info">
+                <p><strong>Status:</strong> {{ result['species_info']['status'] }}</p>
+                <p><strong>Nama Latin:</strong> {{ result['species_info']['latin_name'] }}</p>
+                <p><strong>Habitat:</strong> {{ result['species_info']['habitat'] }}</p>
+                <p><strong>Deskripsi:</strong> {{ result['species_info']['description'] }}</p>
+            </div>
+            {% endif %}            
+
+        </div>
+    </div>
+    <!-- Tombol Aksi -->
+    <div class="card-actions">
+        <div class="btn-container">
+            <a href="{{ url_for('halamanScan') }}" class="btn">Deteksi Gambar Lain</a>
+            <form method="GET" action="{{ url_for('lapor') }}">
+                <input type="hidden" name="file_url" value="{{   file_url}}"> <!-- Kirim file_url -->
+                <input type="hidden" name="filename" value="{{ file_url}}">
+                <input type="hidden" name="result" value="{{ result }}">
+                <button type="submit" class="btn-report" id="btn-lapor" {% if result['species_info']['status'] != 'DILINDUNGI' %}disabled{% endif %}>
+                    Laporkan
+                </button>
+                
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+    document.getElementById('btn-lapor').addEventListener('click', function () {
+        if (!this.disabled) {
+            window.location.href = "{{ url_for('lapor') }}";
+        }
+    });
+</script>
+{% endblock %}

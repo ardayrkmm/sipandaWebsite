@@ -1,0 +1,196 @@
+*,
+html {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EEEEE4;
+}
+
+.container {
+    text-align: center;
+    margin: 100px auto;
+    max-width: 900px;
+    overflow: hidden;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+.card {
+    margin-top: 50px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.btn {
+    margin-top: 10px;
+    background-color: #014224;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #013b20;
+}
+
+.image-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.illustration {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+
+@media screen and (max-width: 1024px) {
+    .container {
+        margin: 50px auto;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        padding: 30px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+    }
+}
+
+/* Mobile Landscape (Max Width: 768px) */
+@media screen and (max-width: 768px) {
+    .container {
+        margin: 30px auto;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+    }
+}
+
+/* Mobile Portrait (Max Width: 480px) */
+@media screen and (max-width: 480px) {
+    .container {
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .card {
+        padding: 15px;
+        margin-top: 20px;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+
+/* iPhone-Specific Styles */
+
+/* iPhone SE, iPhone 5/5S */
+@media screen and (max-width: 375px) {
+    .container {
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 16px;
+        margin-bottom: 8px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+/* iPhone 11/12/13 (Pro/Pro Max) */
+@media screen and (max-width: 414px) {
+    .container {
+        margin: 15px auto;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .btn {
+        padding: 6px 14px;
+        font-size: 14px;
+    }
+}
+
+/* iPhone 14 Pro Max */
+@media screen and (max-width: 430px) {
+    .container {
+        margin: 20px auto;
+        padding: 12px;
+    }
+
+    h1 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .card {
+        padding: 25px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+    }
+}
