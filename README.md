@@ -1,59 +1,59 @@
-# 🌐 Website Si Panda - Sistem Informasi Hewan Dilindungi
+# 🌐 Si Panda Website – Protected Wildlife Information System
 
-**Si Panda Web** adalah platform berbasis browser yang dikembangkan menggunakan framework Flask. Website ini berfungsi sebagai pusat informasi, pemetaan, dan sistem pelaporan hewan dilindungi di Indonesia, dengan dukungan Kecerdasan Buatan (AI) untuk identifikasi spesies secara otomatis.
-
----
-
-## ✨ Fitur Utama (Web Version)
-
-* **🗺️ Interactive Conservation Map**: Peta interaktif menggunakan integrasi API untuk menunjukkan lokasi pusat konservasi dan taman nasional di seluruh Indonesia.
-* **📢 Dashboard Lapor**: Sistem formulir pelaporan yang memungkinkan masyarakat mengunggah laporan pelanggaran terhadap satwa dilindungi.
-* **🧠 AI Species Identification**: Fitur unggah foto di mana sistem akan memproses gambar menggunakan model **CNN (Convolutional Neural Network)** di sisi server untuk mengidentifikasi jenis hewan.
-* **📖 Ensiklopedia Digital**: Katalog lengkap mengenai informasi, status kelangkaan, dan fakta unik hewan endemik Indonesia.
+**Si Panda Web** is a browser-based platform developed using the Flask framework. This website serves as a central hub for information, mapping, and reporting of protected wildlife in Indonesia, with Artificial Intelligence (AI) support for automatic species identification.
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## ✨ Key Features (Web Version)
+
+* **🗺️ Interactive Conservation Map**: An interactive map using API integration to display the locations of conservation centers and national parks across Indonesia.
+* **📢 Reporting Dashboard**: A reporting form system that allows the public to submit reports related to violations involving protected wildlife.
+* **🧠 AI Species Identification**: A photo upload feature where the system processes images using a **CNN (Convolutional Neural Network)** model on the server side to identify animal species.
+* **📖 Digital Encyclopedia**: A comprehensive catalog containing information, conservation status, and unique facts about Indonesia’s endemic wildlife.
+
+---
+
+## 🛠️ Technologies Used
 
 * **Backend**: [Flask (Python)](https://flask.palletsprojects.com/)
 * **Frontend**: HTML5, CSS3, JavaScript (Bootstrap/Tailwind)
-* **Artificial Intelligence**: [TensorFlow/Keras](https://www.tensorflow.org/) (Untuk implementasi Model CNN)
-* **Database**: SQLite / PostgreSQL (Untuk menyimpan data laporan dan informasi hewan)
-* **API**: REST API untuk komunikasi data dengan layanan eksternal.
+* **Artificial Intelligence**: [TensorFlow/Keras](https://www.tensorflow.org/) (For CNN model implementation)
+* **Database**: SQLite / PostgreSQL (For storing report data and wildlife information)
+* **API**: REST API for data communication with external services.
 
 ---
 
-## 🚀 Cara Menjalankan Website Secara Lokal
+## 🚀 How to Run the Website Locally
 
-1.  **Clone repository**:
+1. **Clone the repository**:
     ```bash
-    git clone [https://github.com/username-kamu/si-panda-flask.git](https://github.com/username-kamu/si-panda-flask.git)
+    git clone https://github.com/username-kamu/si-panda-flask.git
     ```
-2.  **Masuk ke folder proyek**:
+2. **Navigate to the project folder**:
     ```bash
     cd si-panda-flask
     ```
-3.  **Buat Virtual Environment (Opsional tapi disarankan)**:
+3. **Create a Virtual Environment (Optional but recommended)**:
     ```bash
     python -m venv venv
-    source venv/bin/activate  # Untuk Linux/Mac
-    venv\Scripts\activate     # Untuk Windows
+    source venv/bin/activate  # For Linux/Mac
+    venv\Scripts\activate     # For Windows
     ```
-4.  **Install Library yang dibutuhkan**:
+4. **Install required libraries**:
     ```bash
     pip install -r requirements.txt
     ```
-5.  **Jalankan Server Flask**:
+5. **Run the Flask server**:
     ```bash
     python app.py
     ```
-6.  Buka browser dan akses `http://127.0.0.1:5000`.
+6. Open a browser and access `http://127.0.0.1:5000`.
 
 ---
 
 ## 👥 Contributors
 
-Tim pengembang utama yang berkolaborasi dalam proyek website ini:
+The core development team collaborating on this website project:
 
 <table>
   <tr>
@@ -74,14 +74,14 @@ Tim pengembang utama yang berkolaborasi dalam proyek website ini:
 
 ---
 
-## 🎯 Tujuan Pengembangan Website
+## 🎯 Website Development Objectives
 
-* Memanfaatkan framework Flask untuk integrasi model AI Python yang lebih *seamless*.
-* Menyediakan platform edukasi publik mengenai kekayaan fauna Indonesia.
-* Membangun sistem pelaporan berbasis web yang aman dan mudah digunakan.
+* Utilize the Flask framework for seamless integration of Python-based AI models.
+* Provide a public education platform highlighting Indonesia’s rich wildlife biodiversity.
+* Build a secure and user-friendly web-based reporting system.
 
 ---
 
-## 📄 Lisensi
+## 📄 License
 
-Proyek ini dibuat untuk keperluan **edukasi dan pengembangan**. Penggunaan dan modifikasi diperbolehkan dengan mencantumkan sumber asli proyek ini.
+This project was created for **educational and development** purposes. Use and modification are permitted with proper attribution to the original project.
